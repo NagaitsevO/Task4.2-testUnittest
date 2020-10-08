@@ -185,5 +185,7 @@ class MainKtTest {
             println()
         }
 
+        assertEquals(4800.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+
     }
 }
