@@ -98,7 +98,7 @@ class MainKtTest {
             } else {
             toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
-        assertEquals(true, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
+        assertEquals(false, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
     }
 
     @Test
