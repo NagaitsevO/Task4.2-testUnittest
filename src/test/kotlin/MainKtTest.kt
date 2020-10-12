@@ -5,187 +5,123 @@ import org.junit.Assert.*
 class MainKtTest {
 
     @Test
-    fun main() {
+    fun main_VK_PAY() {
         var userTypeOfCount = typeOfCount.VK_PAY
         var previousSummOfPay = 0.0
         var currentSummOfPay = 56000.0             //560 руб.
 
-        // Test 1
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+           } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
-        // Test 2
-        userTypeOfCount = typeOfCount.MIR
-        previousSummOfPay = 0.0
-        currentSummOfPay = 56000.0             //560 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
-        }
-        // Test 2.1
-        userTypeOfCount = typeOfCount.MIR
-        previousSummOfPay = 0.0
-        currentSummOfPay = 560.0             //5.6 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
-        }
-        // Test 3
-        userTypeOfCount = typeOfCount.MASTERCARD
-        previousSummOfPay = 1111100000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
-        }
+        assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-        // Test 3.1
-        userTypeOfCount = typeOfCount.MASTERCARD
-        previousSummOfPay = 11000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_MIR_CommonComission() {
+        var userTypeOfCount = typeOfCount.MIR
+        var previousSummOfPay = 0.0
+        var currentSummOfPay = 56000.0             //560 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(42.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-        // Test 3.2
-        userTypeOfCount = typeOfCount.MASTERCARD
-        previousSummOfPay = 10000000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_MIR_MinimalComission() {
+        var userTypeOfCount = typeOfCount.MIR
+        var previousSummOfPay = 0.0
+        var currentSummOfPay = 560.0             //5.6 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(35.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-
-        // Test 5
-        userTypeOfCount = typeOfCount.VISA
-        previousSummOfPay = 7800000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_MASTERCARD_outOfLimit() {
+        var userTypeOfCount = typeOfCount.MASTERCARD
+        var previousSummOfPay = 1111100000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(true, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
+    }
 
-        // Test 6
-        userTypeOfCount = typeOfCount.MAESTRO
-        previousSummOfPay = 1111100000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_MASTERCARD_LittlePreviousSummOfPay() {
+        var userTypeOfCount = typeOfCount.MASTERCARD
+        var previousSummOfPay = 11000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-        // Test 6.1
-        userTypeOfCount = typeOfCount.MAESTRO
-        previousSummOfPay = 11000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_MASTERCARD_bigPreviousSummOfPay() {
+        var userTypeOfCount = typeOfCount.MASTERCARD
+        var previousSummOfPay = 10000000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(4700.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-        // Test 6.2
-        userTypeOfCount = typeOfCount.MAESTRO
-        previousSummOfPay = 10000000.0
-        currentSummOfPay = 7800000.0             //78 000 руб.
+    @Test
+    fun main_VISA() {
+        var userTypeOfCount = typeOfCount.VISA
+        var previousSummOfPay = 7800000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
         if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Превышен лимит для $userTypeOfCount")
-            println()
-        } else {
-            println("Сумма платежа " + currentSummOfPay / 100 + " руб.")
-            println("сумма оплат за предыдущий период " + previousSummOfPay / 100 + " руб.")
-            println("тип карты $userTypeOfCount")
-            println("Сумма комиссии " + toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100 + " руб.")
-            println()
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
         }
+        assertEquals(5850.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
 
-        assertEquals(4800.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    @Test
+    fun main_MAESTRO_outOfLimit() {
+        var userTypeOfCount = typeOfCount.MAESTRO
+        var previousSummOfPay = 1111100000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
+        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
+        }
+        assertEquals(true, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
+    }
 
+    @Test
+    fun main_MAESTRO_LittlePreviousComission() {
+        var userTypeOfCount = typeOfCount.MAESTRO
+        var previousSummOfPay = 11000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
+        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
+        }
+        assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+    }
+
+    @Test
+    fun main_MAESTRO_bigPreviousComission() {
+        var userTypeOfCount = typeOfCount.MAESTRO
+        var previousSummOfPay = 10000000.0
+        var currentSummOfPay = 7800000.0             //78 000 руб.
+        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
+            } else {
+            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
+        }
+        assertEquals(4700.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 }
