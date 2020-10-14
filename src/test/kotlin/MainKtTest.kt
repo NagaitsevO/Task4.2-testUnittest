@@ -10,11 +10,7 @@ class MainKtTest {
         var previousSummOfPay = 0.0
         var currentSummOfPay = 56000.0             //560 руб.
 
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-           } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
-        assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
+        assertEquals(1.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
     @Test
@@ -22,10 +18,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MIR
         var previousSummOfPay = 0.0
         var currentSummOfPay = 56000.0             //560 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(42.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -34,10 +27,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MIR
         var previousSummOfPay = 0.0
         var currentSummOfPay = 560.0             //5.6 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(35.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -46,10 +36,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MASTERCARD
         var previousSummOfPay = 1111100000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(true, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
     }
 
@@ -58,10 +45,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MASTERCARD
         var previousSummOfPay = 11000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -70,10 +54,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MASTERCARD
         var previousSummOfPay = 10000000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(4700.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -82,10 +63,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.VISA
         var previousSummOfPay = 7800000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(5850.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -94,11 +72,8 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MAESTRO
         var previousSummOfPay = 1111100000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
-        assertEquals(false, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
+
+        assertEquals(true, isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount))
     }
 
     @Test
@@ -106,10 +81,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MAESTRO
         var previousSummOfPay = 11000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(0.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 
@@ -118,10 +90,7 @@ class MainKtTest {
         var userTypeOfCount = typeOfCount.MAESTRO
         var previousSummOfPay = 10000000.0
         var currentSummOfPay = 7800000.0             //78 000 руб.
-        if (isLimit(previousSummOfPay, currentSummOfPay, userTypeOfCount) == true) {
-            } else {
-            toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount)
-        }
+
         assertEquals(4700.0, toFindTheComission(previousSummOfPay, currentSummOfPay, userTypeOfCount) / 100, 0.0)
     }
 }
